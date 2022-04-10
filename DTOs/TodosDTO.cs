@@ -11,7 +11,7 @@ public record TodosDTO
 public record TodosCreateDTO
 {
 
-    public int UserId { get; set; }
+    // public int UserId { get; set; }
     public String Description { get; set; }
     public String Title { get; set; }
 }

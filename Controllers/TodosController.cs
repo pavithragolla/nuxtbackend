@@ -24,12 +24,15 @@ public class TodosController : ControllerBase
     [Authorize]
     public async Task<ActionResult<TodosDTO>> CreateTodos([FromBody] TodosCreateDTO Data)
     {
+         var UserId = GetCurrentUserId();
+
         var ToCreateTodos = new Todos
         {
-            UserId = Data.UserId,
+            UserId = Int32.Parse(UserId),
             Description = Data.Description,
             Title = Data.Title
         };
+
         var CreatedTodos = await _Todos.Create(ToCreateTodos);
 
         return StatusCode(StatusCodes.Status201Created, CreatedTodos.asDto);
